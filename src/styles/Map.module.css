@@ -1,0 +1,71 @@
+.mapSection {
+    background-color: #173f8b; /* Темно-синий фон, как в Header */
+    padding: 40px 20px;
+  }
+  
+  .mapContainer {
+    /* Стили для SVG-карты, чтобы она была центрирована и занимала всю ширину */
+    width: 100%;
+    max-width: 1000px; /* Ограничение по ширине */
+    margin: 0 auto;
+  }
+  
+  /* Стили для имитации фильтра в Desktop-4 */
+  .filterLayout {
+    display: flex;
+    position: relative;
+    z-index: 5;
+  }
+  
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .filterHeader {
+    color: #173f8b;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  
+  .checkboxItem {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkboxItem label {
+    color: #333;
+    margin-left: 10px;
+  }
+  
+  .filterButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .clearButton {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .addButton {
+    background-color: #173f8b;
+    color: #fff;
+  }

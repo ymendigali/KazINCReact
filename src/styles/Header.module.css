@@ -1,0 +1,79 @@
+.header {
+    background-color: #173f8b; /* Темно-синий цвет */
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav a,
+  .lang a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s;
+  }
+  
+  .nav a:hover {
+    border-bottom: 2px solid #fff;
+  }
+  
+  .dropdown {
+    position: relative;
+    cursor: pointer;
+    padding: 5px 0;
+  }
+  
+  .dropdownArrow {
+    margin-left: 5px;
+  }
+  
+  .dropdownContent {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2154b5; /* Чуть светлее для фона выпадающего меню */
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    padding: 10px 0;
+  }
+  
+  .dropdownContent a {
+    display: block;
+    padding: 8px 15px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .dropdownContent a:hover {
+    background-color: #3366cc;
+    border-bottom: none;
+  }
+  
+  .lang {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .login {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #fff;
+    cursor: pointer;
+  }

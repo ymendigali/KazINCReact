@@ -1,0 +1,17 @@
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .mainContent {
+    padding-top: 20px; /* Отступ после хедера */
+  }
+  
+  .h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin: 40px 0;
+  }
