@@ -1,79 +1,155 @@
+/* src/styles/Header.module.css */
+
 .header {
-    background-color: #173f8b; /* Темно-синий цвет */
-    color: #fff;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-  }
-  
-  .nav {
-    display: flex;
-    gap: 30px;
-  }
-  
-  .nav a,
-  .lang a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 5px 0;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s;
-  }
-  
-  .nav a:hover {
-    border-bottom: 2px solid #fff;
-  }
-  
-  .dropdown {
-    position: relative;
-    cursor: pointer;
-    padding: 5px 0;
-  }
-  
-  .dropdownArrow {
-    margin-left: 5px;
-  }
-  
-  .dropdownContent {
+  height: 140px; 
+  position: relative; /* База для абсолютного позиционирования */
+  background-color: #14358a; 
+  width: 100%;
+  color: #fff;
+  display: flex;
+  /* Удалили: display: flex, justify-content, align-items, padding */
+}
+.logoContainer {
+  /* Если этот блок находится в Flexbox, его, возможно, не нужно центрировать явно,
+     но если он отдельный, используйте 'text-align: center' */
+
     position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #2154b5; /* Чуть светлее для фона выпадающего меню */
-    min-width: 150px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    padding: 10px 0;
-  }
-  
-  .dropdownContent a {
-    display: block;
-    padding: 8px 15px;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .dropdownContent a:hover {
-    background-color: #3366cc;
-    border-bottom: none;
-  }
-  
-  .lang {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .login {
-    display: flex;
+    top: 30px;
+    left: 368px; /* Точная координата left: 368px */
+    height: 24px;
+    
+    display: flex; /* Используем flex для расположения трех меню рядом */
+    flex-direction: column;
+    align-items: left;
+  /* Добавьте небольшой отступ снизу, если нужно */
+}
+/* --- Элементы в верхнем ряду (33px) --- */
+.logo {
+  top: 33px;
+  left: 300px; /* Точная координата left: 368px */
+  width: 124.875px;
+  height: 37px;
+  /* Удалили: margin-left, margin-top */
+  font-size: 32px; /* Более крупный размер, как на макете */
+  font-weight: 800; /* Очень жирный */
+  line-height: 1; 
+  color: #fff;
+  /* Дополнительно для выравнивания текста */
+  display: flex;
+  align-items: center;
+}
+
+.highlightSu {
+  color: #F6CF43; /* Золотисто-желтый цвет для SU */
+}
+.subText {
+  color: #ffffff; /* Цвет подписи - белый */
+  font-size: 10px; /* Очень маленький шрифт, как на макете */
+  font-weight: 400; /* Обычный или тонкий шрифт */
+  /* Немного уменьшить интервал между буквами, чтобы выглядело плотнее */
+  letter-spacing: 0.1em; 
+}
+
+/* --- Группа дропдаунов (104px) --- */
+/* Этот класс должен быть применен к контейнеру, который оборачивает 3 выпадающих меню */
+.dropdownGroup { 
+    position: absolute;
+    top: 104px;
+    left: 368px; /* Точная координата left: 368px */
+    height: 24px;
+    
+    display: flex; /* Используем flex для расположения трех меню рядом */
     align-items: center;
-    gap: 5px;
+    gap: 30px; /* Отступ между меню */
+}
+
+/* --- Навигационные ссылки (если вдруг они появляются) --- */
+/* Оставим, но они должны быть скрыты в режиме Desktop - 1 */
+.nav {
+  display: none; /* Скрываем основную навигацию в гостевом режиме */
+}
+
+/* Стили для самого дропдауна (надпись "РЕГИОН") */
+.dropdown {
+  /* Стили для надписи, а не для всей группы */
+  cursor: pointer;
+  padding: 5px 0;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* Убедитесь, что этот класс используется для ВЫПАДАЮЩЕГО СПИСКА, а не для всей группы */
+.dropdownContent {
+  position: absolute;
+  top: 100%; /* Выпадающий список появляется под родительским дропдауном */
+  left: 0;
+  z-index: 10;
+  background-color: #14358a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Удалены лишние позиционные стили */
+  display: block;
+}
+
+.dropdownContent a {
+  display: block;
+  padding: 8px 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdownContent a:hover {
+  background-color: #3366cc;
+  border-bottom: none;
+}
+
+
+/* --- Элементы в верхнем ряду справа (33px) --- */
+.languageSelect {
+  position: absolute;
+  top: 33px;
+  left: 1297px; /* Точная координата left: 1297px */
+  width: 68px;
+  height: 37px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.login { /* Используем loginButton, как в предыдущем коде, чтобы не переписывать HTML */
+  position: absolute;
+  top: 33px;
+  left: 1450px; /* Точная координата left: 1450px */
+  width: 102px;
+  height: 37px;
+  /* Стили для кнопки "Войти" */
+  background: none;
+  border: 1px solid white; 
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+  /* Дополнительно для выравнивания текста/иконки внутри кнопки */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.loginTitle {
+    /* Чтобы центрировать его в нижней части хедера, 
+       лучше всего использовать Flexbox или абсолютное позиционирование */
+       
+    position: absolute;
+    top: 90px; /* Регулируем, чтобы был по центру между 70px и 140px */
+    left: 50%;
+    transform: translateX(-50%); /* Точное горизонтальное центрирование */
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 178%;
+    letter-spacing: 1%;
+
     color: #fff;
-    cursor: pointer;
-  }
+}

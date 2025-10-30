@@ -1,0 +1,9 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    /* Установите шрифт, который использует макет */
+    font-family: Arial, sans-serif; 
+}
+* {
+    box-sizing: border-box; /* Важно для работы ширины и padding */
+}

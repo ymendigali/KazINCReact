@@ -1,63 +1,93 @@
+/* src/styles/Stats.module.css */
+
+/* --- 1. Контейнер сетки (объединяет позиционирование и сетку) --- */
 .statsGrid {
+    /* Точные размеры, как вы указали: 1184x376 */
+    width: 1184px;
+    height: 376px;
+    
+    /* Используем Grid для сетки 2x2 */
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 40px 0;
-  }
-  
-  .statCard {
+    grid-template-columns: repeat(2, 1fr); /* Две равные колонки */
+    grid-template-rows: repeat(2, 1fr);    /* Два равных ряда */
+    
+    /* Gap на макете - это линии-разделители. 
+       Чтобы не было внешних отступов, используем border или 0px gap */
+    gap: 0; /* Убираем пробелы, чтобы контролировать разделители границами */
+    
+    background-color: white; /* Заливка, если нужна общая */
+    border: 1px solid #e0e0e0; /* Добавляем общую тонкую рамку (опционально) */
+}
+
+/* --- 2. Отдельная карточка статистики (StatCard) --- */
+.statCard {
     background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* Размеры 592px x 188px (1184/2 x 376/2). Сетка делает это автоматически. */
+    padding: 30px; /* Внутренние отступы, как на макете */
     display: flex;
     flex-direction: column;
-  }
-  
-  .cardTitle {
+    
+    /* Добавляем внутренние разделители (тонкие серые линии на макете) */
+    border-right: 1px solid #e0e0e0; /* Вертикальный разделитель */
+    border-bottom: 1px solid #e0e0e0; /* Горизонтальный разделитель */
+}
+
+/* Убираем правый и нижний бордер у крайних элементов, чтобы не было двойной рамки */
+.statCard:nth-child(2n) { /* Убираем вертикальный разделитель справа (2-й и 4-й элемент) */
+    border-right: none;
+}
+.statCard:nth-child(n+3) { /* Убираем горизонтальный разделитель снизу (3-й и 4-й элемент) */
+    border-bottom: none;
+}
+
+/* --- 3. Стили текста (Унификация цвета) --- */
+.cardTitle {
     font-size: 1.2rem;
     font-weight: 500;
-    color: #173f8b;
+    color: #333; /* Делаем темным, как на макете */
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-  }
-  
-  .icon {
+}
+
+.icon {
     font-size: 2rem;
     margin-right: 15px;
-    color: #173f8b;
-    background-color: #e6e6fa; /* Светлый фон для иконки */
+    color: #173f8b; 
+    background-color: #e6e6fa; 
     padding: 10px;
     border-radius: 50%;
-  }
-  
-  .numbers {
+}
+
+.numbers {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .numberItem {
+    gap: 20px 40px; /* Увеличим горизонтальный зазор, чтобы уместить 4 блока */
+}
+
+.numberItem {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
-  
-  .value {
-    font-size: 2rem;
+    /* Установим фиксированную ширину для элементов 4-блочных квадрантов */
+    width: calc(50% - 20px); 
+}
+
+.value {
+    font-size: 1.8rem;
     font-weight: bold;
-    color: #333;
-  }
-  
-  .unit {
-    font-size: 0.9rem;
-    color: #777;
+    color: #333; /* Делаем темным */
+}
+
+.unit {
+    font-size: 0.8rem;
+    color: #333; /* Делаем темным, как вы просили (один цвет для всех) */
     margin-top: 5px;
-  }
-  
-  .publicationValue {
+    max-width: 90px; /* Ограничиваем ширину, чтобы текст был в несколько строк */
+}
+
+.publicationValue {
     font-size: 3rem;
     font-weight: bold;
-    color: #333;
-  }
+    color: #333; /* Делаем темным */
+}

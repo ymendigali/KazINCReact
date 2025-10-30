@@ -1,15 +1,74 @@
 .mapSection {
-    background-color: #173f8b; /* Темно-синий фон, как в Header */
+    background-color: #14358a;
+    width: 100%;
+    height: 500px; /* Примерная высота, подберите по макету */
     padding: 40px 20px;
   }
-  
-  .mapContainer {
-    /* Стили для SVG-карты, чтобы она была центрирована и занимала всю ширину */
+
+.mapContainer {
+    /* 1. Фон на всю ширину (темно-синий) */
+    background-color: #14358a; 
     width: 100%;
-    max-width: 1000px; /* Ограничение по ширине */
-    margin: 0 auto;
-  }
-  
+    
+    /* 2. Высота и внутренние отступы для позиционирования карты */
+    /* Высота секции карты на макете около 440px + хедер 140px = 580px */
+    min-height: 440px; 
+    padding-top: 50px;    /* Отступ сверху от хедера (для опускания карты) */
+    padding-bottom: 50px; /* Отступ снизу */
+
+    /* 3. Используем Flexbox для горизонтального центрирования контента */
+    display: flex;
+    justify-content: center;
+    /* align-items: center удален, т.к. мы используем padding-top для вертикального выравнивания */
+}
+
+.mapContent {
+    /* 4. Ограничиваем контент шириной 1184px и центрируем его */
+    width: 1184px; 
+    /* margin: 0 auto; - не нужен, т.к. родительский Flexbox центрирует */
+}
+
+.kazMap {
+    display: block;
+    width: 100%; /* Карта займет всю ширину 1184px */
+    height: auto;
+    overflow: visible;
+}
+/* Если вы выделяете какую-то область (как Алматинскую на макете): */
+#KZ-ALM { /* Используйте ID области */
+  fill: #002D62; /* Чуть более темный синий */
+}
+
+/* --- Стили областей (MapRegion) --- */
+
+.mapRegion {
+    fill: #143e9a; /* Основной цвет областей (темно-синий, как на макете) */
+    transition: fill 0.3s ease-in-out; 
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.5); /* Тонкая белая обводка */
+    stroke-width: 0.5px;
+}
+
+.mapRegion:hover {
+    fill: #3a60a7; /* Цвет при наведении */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+/* Для названий областей (большой текст) */
+.regionLabel {
+  fill: #ffffff;      /* Белый цвет текста */
+  font-size: 16px;    /* Настройте размер: 14px-18px */
+  font-weight: 500;   
+  text-anchor: middle; /* **ОЧЕНЬ ВАЖНО**: Центрирует текст по координате X */
+  /* pointer-events: none; - Должно быть прописано в JSX */
+}
+
+/* Для названий городов (маленький текст возле кругов) */
+.cityLabel {
+  fill: #ffffff;
+  font-size: 10px;    /* Меньший шрифт для городов */
+  text-anchor: middle;
+}
   /* Стили для имитации фильтра в Desktop-4 */
   .filterLayout {
     display: flex;

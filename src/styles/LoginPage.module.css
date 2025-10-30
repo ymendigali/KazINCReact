@@ -1,0 +1,135 @@
+/* Общий контейнер страницы */
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирует все по горизонтали */
+    /* Высота хедера - 140px, поэтому начинаем контент сразу под ним */
+    padding-top: 50px; 
+    padding-bottom: 50px;
+    background-color: #f7f7f7; /* Светло-серый фон страницы */
+    min-height: calc(100vh - 140px); /* Чтобы занимал оставшееся пространство */
+}
+
+/* Белый блок с формой (визуальная основа) */
+.loginFormBox {
+    background-color: #ffffff;
+    width: 80%; /* Занимает большую часть ширины */
+    max-width: 800px; /* Ограничиваем максимальную ширину */
+    padding: 30px 40px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Легкая тень */
+    border-radius: 8px;
+    /* Устанавливаем положение для элементов формы */
+    position: relative; 
+    
+    /* Стили для формы внутри */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем содержимое формы (кнопки) */
+}
+
+.form {
+    width: 100%;
+    max-width: 350px; /* Ограничиваем ширину полей ввода */
+}
+
+/* Группа "Email" или "Пароль" */
+.inputGroup {
+    margin-bottom: 20px;
+    position: relative; /* Для позиционирования ссылки "Сбросить пароль" */
+}
+
+.label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Ссылка "Сбросить ваш пароль" под полем "Пароль" */
+.resetPasswordLink {
+    position: absolute;
+    top: 5px; /* Регулируем позицию */
+    right: 0;
+    font-size: 11px;
+    color: #14358a;
+    text-decoration: none;
+}
+
+/* Ряд с опциями: Запомнить меня и Забыли пароль */
+.optionsRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-size: 12px;
+}
+
+.checkboxContainer label {
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.forgotPassword {
+    color: #14358a; /* Синий цвет */
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* Текст соглашения */
+.agreementText {
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 380px;
+    margin: 20px 0;
+}
+
+/* Кнопки */
+.primaryButton, .secondaryButton {
+    width: 100%;
+    max-width: 150px; /* Ограничиваем ширину, как на макете */
+    padding: 10px 0;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.primaryButton {
+    background-color: #14358a; /* Синий цвет */
+    color: white;
+    border: none;
+}
+
+.primaryButton:hover {
+    background-color: #0d2a6b;
+}
+
+.secondaryButton {
+    background: none;
+    color: #14358a;
+    border: 1px solid #14358a;
+    margin-bottom: 20px;
+}
+
+/* Копирайт внизу страницы */
+.copyrightText {
+    font-size: 10px;
+    color: #999;
+    margin-top: 20px;
+}

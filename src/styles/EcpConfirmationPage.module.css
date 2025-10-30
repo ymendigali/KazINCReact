@@ -1,0 +1,56 @@
+/* --- Общая структура страницы --- */
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px; /* Большой отступ сверху для центрирования */
+    padding-bottom: 50px;
+    background-color: #f7f7f7; 
+    min-height: calc(100vh - 140px);
+}
+
+.contentBox {
+    background-color: #ffffff;
+    width: 90%; 
+    max-width: 600px; 
+    padding: 60px 40px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    color: #14358a;
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.primaryButton {
+    background-color: #14358a; 
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+    max-width: 250px;
+    width: 100%;
+}
+
+.secondaryLink {
+    color: #14358a;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.copyrightText {
+    font-size: 10px;
+    color: #999;
+    margin-top: 20px;
+}
