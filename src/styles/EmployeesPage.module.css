@@ -1,0 +1,137 @@
+/* src/styles/EmployeesPage.module.css */
+
+.pageContainer {
+    /* Добавляем отступы, чтобы контент не прилипал к краям */
+    padding: 20px 0;
+    min-height: calc(100vh - 120px); 
+    background-color: #f7f7f7;
+    margin: 0 auto;
+    /* Ограничиваем контент по ширине для лучшего вида */
+    max-width: 1400px;
+}
+
+.contentWrapper {
+    display: flex;
+    gap: 30px;
+}
+
+/* --- ОСНОВНОЙ КОНТЕНТ (Таблица) --- */
+.mainContent {
+    flex-grow: 1;
+    padding-right: 20px;
+}
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #0445A5;
+}
+
+.primaryButton {
+    background-color: #1a429b; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* --- РЯД СТАТИСТИКИ (над таблицей) --- */
+.statsRow {
+    display: flex;
+    justify-content: flex-start; /* Выравнивание по левому краю */
+    align-items: center;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.foundText {
+    font-size: 14px;
+    color: #0445A5;
+    font-weight: 600;
+}
+
+/* --- Таблица (DataGrid) --- */
+.tableWrapper {
+    /* Фон таблицы по макету белый, но заголовок имеет светлый фон */
+    background-color: white; 
+    border-radius: 4px;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dataGrid {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.dataGrid thead {
+    background-color: #f0f4ff; /* Очень светлый голубой фон для заголовка */
+    border-radius: 4px 4px 0 0;
+}
+
+.dataGrid th {
+    text-align: left;
+    padding: 12px 10px;
+    color: #1a429b; /* Синий цвет заголовка */
+    font-weight: 600;
+    border-bottom: 2px solid #ddd;
+    cursor: pointer; /* Для сортировки */
+}
+
+.dataGrid td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #eee;
+    color: #0445A5;
+}
+
+.dataGrid tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.linkText {
+    color: #1a429b;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* --- Пагинация в футере таблицы --- */
+.paginationFooter td {
+    border-bottom: none;
+    text-align: center;
+    padding: 15px 0;
+}
+.pagination a {
+    text-decoration: none;
+    color: #666;
+    padding: 5px 10px;
+    margin: 0 3px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.pagination a:hover {
+    background-color: #eee;
+}
+.activePage {
+    background-color: #1a429b;
+    color: white !important;
+}
+
+.copyrightText {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px 0;
+    font-size: 12px;
+    color: #999;
+}

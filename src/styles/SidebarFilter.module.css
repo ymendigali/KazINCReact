@@ -1,0 +1,95 @@
+/* src/styles/SidebarFilter.module.css */
+
+.sidebar {
+    width: 250px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 0; /* Удаляем паддинг от общего блока, чтобы группы имели свой паддинг */
+    height: fit-content; /* Панель занимает только нужное место */
+    margin-left: 20px;
+}
+
+.filterHeader {
+    background-color: #f0f4ff; /* Светлый голубой фон */
+    padding: 15px;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #1a429b;
+    font-weight: 600;
+}
+
+.filterGroup {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+.filterGroup:last-of-type {
+    border-bottom: none;
+}
+
+.filterTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a429b; /* Синий заголовок */
+    margin-bottom: 10px;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.checkbox {
+    /* Стилизация чекбокса */
+    margin-right: 10px;
+    accent-color: #1a429b;
+}
+
+.count {
+    color: #888;
+    font-size: 13px;
+}
+
+.viewAll {
+    display: block;
+    font-size: 13px;
+    color: #1a429b;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.ageRange {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.sliderPlaceholder {
+    /* Заглушка для слайдера */
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.sortButton {
+    width: calc(100% - 30px); /* Учитываем паддинг группы */
+    margin: 15px;
+    padding: 10px;
+    background-color: #1a429b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}

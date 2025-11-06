@@ -1,83 +1,111 @@
+// src/components/Header.jsx
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom'; // 👈 Импортируем useLocation
+import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import styles from '../styles/Header.module.css';
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from './DropdownMenu'; 
 
-// Принимаем isLoggedIn и setIsLoggedIn для управления состоянием входа
+const dashboardLinks = [
+    { title: 'Главная', path: '/' }, 
+    { title: 'Проекты', path: '/dashboard/projects' },
+    { title: 'Сотрудники', path: '/dashboard/employees' },
+    { title: 'Публикации', path: '/dashboard/publications' },
+    { title: 'Финансы', path: '/dashboard/finance' },
+];
+
 const Header = ({ isLoggedIn, setIsLoggedIn }) => {
-
-    // Получаем текущий маршрут
     const location = useLocation();
-    // Проверяем, находится ли пользователь на странице аутентификации
+    const navigate = useNavigate(); // Используем для перенаправления после выхода
+
     const isLoginPage = location.pathname === '/login';
     const isRegisterPage = location.pathname === '/register';
     const isAuthPage = isLoginPage || isRegisterPage;
     
-    // ✅ ВЫЧИСЛЯЕМ ТЕКСТ ЗАГОЛОВКА
-    let headerTitle = '';
-    if (isRegisterPage) {
-        headerTitle = 'Регистрация'; // Если '/register', то "Регистрация"
-    } else if (isLoginPage) {
-        headerTitle = 'Вход в личный кабинет'; // Если '/login', то "Вход в личный кабинет"
-    }
-    // Функция для имитации входа/выхода
-    const handleLogin = () => {
-        // Здесь должна быть реальная логика аутентификации,
-        // но для макета просто переключаем состояние
-        setIsLoggedIn(!isLoggedIn);
+    // ✅ 1. ЛОГИКА ДЛЯ ДАШБОРД-МЕНЮ (ТОЛЬКО ПОСЛЕ ВХОДА)
+    const showDashboardNav = isLoggedIn; 
+    
+    // ✅ 2. ЛОГИКА ДЛЯ ДРОПДАУНОВ (ВСЕГДА, КРОМЕ СТРАНИЦ АВТОРИЗАЦИИ и страниц деталей дашборда, где они не нужны)
+    const isDashboardDetailPage = location.pathname.startsWith('/dashboard/'); 
+    const showFilterNav = !isAuthPage && !isDashboardDetailPage; 
+
+    // ✅ 3. ЗАГОЛОВОК ДЛЯ АВТОРИЗАЦИИ
+    let headerTitle = isRegisterPage ? 'Регистрация' : (isLoginPage ? 'Вход в личный кабинет' : '');
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        // Перенаправляем на главную страницу после выхода
+        navigate('/'); 
     };
 
     return (
         <header className={styles.header}>
-
-            <div className={styles.logoContainer}>
-             
-                <div className={styles.logo}>
-                    DDM<span className={styles.highlightSu}>SU</span>
-                </div>
-                <div className={styles.subText}>
-                    DIGITAL DECISION-MAKING SYSTEM UNIFIED
-                </div>
             
+            {/* --- 1. ВЕРХНИЙ РЯД (Логотип, Дашборд-меню/Заголовок, Правая часть) --- */}
+            <div className={styles.headerTop}>
+                
+                {/* Логотип DDM SU */}
+                <Link to="/" className={styles.logoLink}> 
+                    <div className={styles.logo}>DDM<span className={styles.highlightSu}>SU</span></div>
+                    <div className={styles.subText}>DIGITAL DECISION-MAKING SYSTEM UNIFIED</div>
+                </Link>
+                
+                {/* УСЛОВНЫЙ КОНТЕНТ В ЦЕНТРЕ */}
+                {showDashboardNav ? (
+                    // ✅ Дашборд-меню (Главная, Проекты...)
+                    <nav className={styles.dashboardNav}>
+                        {dashboardLinks.map((link) => (
+                            <Link
+                                key={link.title}
+                                to={link.path}
+                                // Активная ссылка в хедере выделяется желтым
+                                className={`${styles.navLink} ${location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === link.path ? styles.activeLink : ''}`}
+                            >
+                                {link.title}
+                            </Link>
+                        ))}
+                    </nav>
+                ) : isAuthPage ? (
+                    // ✅ Заголовок "Вход в личный кабинет"
+                    <div className={styles.loginTitle}>
+                        {headerTitle}
+                    </div>
+                ) : (
+                    // Пустой блок для выравнивания, когда нет ни меню, ни заголовка
+                    <div className={styles.emptySpace}></div>
+                )}
+                
+                {/* Правая часть (Языки, ВОЙТИ/Иконка) */}
+                <div className={styles.rightControls}>
+                    <div className={styles.languageSelect}>
+                        <span className={styles.activeLang}>KZ</span> / RU / EN
+                    </div>
+                    
+                    {!isLoggedIn ? (
+                        // Кнопка ВОЙТИ
+                        <Link to="/login" className={styles.loginButton}> 
+                             ВОЙТИ 
+                        </Link>
+                    ) : (
+                        // Иконка пользователя (при входе)
+                        <button className={styles.userIcon} onClick={handleLogout}>
+                            👤
+                        </button>
+                    )}
+                </div>
             </div>
 
-            
-
-            {/* ✅ 1. УСЛОВНЫЙ РЕНДЕРИНГ ДРОПДАУНОВ (ТОЛЬКО ЗДЕСЬ) */}
-            {!isAuthPage && (
-                <div className={styles.dropdownGroup}>
-                    <DropdownMenu title="РЕГИОН" items={['Область Абай', 'Город Алматы', 'Label', 'Label', '...']} />
+            {/* --- 2. НИЖНИЙ РЯД (Дропдауны) --- */}
+            {showFilterNav && (
+                <div className={styles.filterNav}> 
+                    <DropdownMenu title="РЕГИОН" items={['Область Абай', 'Город Алматы', '...']} />
                     <DropdownMenu title="НАПРАВЛЕНИЕ" items={['Label', 'Label', '...']} />
                     <DropdownMenu title="ОРГАНИЗАЦИЯ" items={['Назарбаев Университет', 'Астана IT', '...']} />
                 </div>
             )}
             
-            {/* ✅ 2. ЗАГОЛОВОК "Вход в личный кабинет" ТОЛЬКО ДЛЯ СТРАНИЦЫ ВХОДА */}
-            {isAuthPage && (
-                <div className={styles.loginTitle}>
-                    {headerTitle} 
-                </div>
-            )}
-            
-            {/* Языки (оставляем один раз) */}
-            <div className={styles.languageSelect}>
-                <span>KZ</span> / <span>RU</span> / <span>EN</span>
-            </div>
-            
-            {/* ✅ 3. КНОПКА ВОЙТИ/ВЫЙТИ (Оставляем один блок с логикой) */}
-            {!isLoggedIn ? (
-                // Используем Link, чтобы перейти на страницу входа
-                <Link to="/login" className={styles.login}> 
-                    <i className="fa fa-user-circle"></i> ВОЙТИ 
-                </Link>
-            ) : (
-                // Используем Button для выхода
-                <button className={styles.login} onClick={handleLogin}>
-                    ВЫЙТИ
-                </button>
-            )}
         </header>
     );
 };
 
 export default Header;
+
+
