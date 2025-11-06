@@ -41,7 +41,8 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
             
             </div>
 
-  
+            
+
             {/* ✅ 1. УСЛОВНЫЙ РЕНДЕРИНГ ДРОПДАУНОВ (ТОЛЬКО ЗДЕСЬ) */}
             {!isAuthPage && (
                 <div className={styles.dropdownGroup}>

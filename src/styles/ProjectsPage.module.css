@@ -1,0 +1,85 @@
+/* src/styles/ProjectsPage.module.css */
+
+.pageContainer {
+    background-color: #f8f8f8; /* Светлый фон, как на макете */
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.contentWrapper {
+    max-width: 1400px; /* Ширина основного контента */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 1. Заголовки и статистика --- */
+.headerRow {
+    margin-bottom: 20px;
+}
+
+.pageTitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.projectCount {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* --- 2. Кнопки действий --- */
+.actionRow {
+    display: flex;
+    justify-content: flex-end; /* Кнопки справа */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.exportButton {
+    /* Синяя кнопка для "Экспорт данных" */
+    background-color: #3b5fcc; 
+    color: #ffffff;
+}
+
+.exportButton:hover {
+    background-color: #2a44a0;
+}
+
+.createButton {
+    /* Синяя кнопка для "Создать проект" (более яркая) */
+    background-color: #4a75ff; 
+    color: #ffffff;
+}
+
+.createButton:hover {
+    background-color: #3b5fcc;
+}
+
+/* --- 3. Таблица --- */
+.tableContainer {
+    /* Таблица должна занимать большую часть экрана */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow-x: auto; /* Для прокрутки таблицы на маленьких экранах */
+}
+
+/* --- 4. Футер --- */
+.copyrightText {
+    text-align: center;
+    padding: 40px 0 20px;
+    font-size: 12px;
+    color: #999;
+}

@@ -1,0 +1,71 @@
+/* src/styles/Table.module.css */
+
+.projectTable {
+    width: 100%;
+    border-collapse: collapse; /* Убираем двойные границы */
+    font-size: 14px;
+    table-layout: auto; /* Позволяет таблице подстраиваться */
+}
+
+.projectTable th, .projectTable td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.projectTable th {
+    background-color: #f0f0f0; 
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+}
+
+.projectTable td {
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+/* Чередование цветов строк, как на макете */
+.oddRow {
+    background-color: #f9f9f9; 
+}
+
+/* Стили для ссылок в таблице (Название проекта) */
+.link {
+    color: #4a75ff; /* Синий цвет */
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Узкие колонки */
+.headerNum, .cellNum { width: 50px; text-align: center; }
+.headerStatus, .headerActions { width: 120px; }
+.cellActions { 
+    display: flex; 
+    gap: 8px; 
+    font-size: 16px;
+    justify-content: center;
+}
+
+/* --- Бейджики статуса --- */
+.statusBadge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.statusSuccess {
+    background-color: #e6f7e9; /* Светло-зеленый фон */
+    color: #2e8b57; /* Темно-зеленый текст */
+}
+
+.statusDanger {
+    background-color: #ffe8e8; /* Светло-красный фон */
+    color: #cc3333; /* Темно-красный текст */
+}
+
+.statusInfo {
+    background-color: #e0ecff; /* Светло-синий фон */
+    color: #3b5fcc; /* Темно-синий текст */
+}

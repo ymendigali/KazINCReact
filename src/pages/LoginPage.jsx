@@ -1,9 +1,20 @@
 // src/pages/LoginPage.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/LoginPage.module.css'; // Создайте этот CSS файл
 
-function LoginPage() {
+function LoginPage({ setIsLoggedIn }) { // 👈 Принимаем пропс
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        
+        // 1. Устанавливаем состояние входа
+        setIsLoggedIn(true); 
+        
+        // 2. Перенаправляем на главную страницу
+        navigate('/'); 
+    };
   return (
     // Общий контейнер страницы (для центрирования белого блока)
     <div className={styles.pageContainer}>
@@ -11,7 +22,7 @@ function LoginPage() {
         {/* Это основной белый блок с формой */}
         <div className={styles.loginFormBox}>
             
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 
                 {/* Email */}
                 <div className={styles.inputGroup}>

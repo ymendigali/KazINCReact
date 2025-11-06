@@ -1,7 +1,7 @@
 /* src/styles/Header.module.css */
 
 .header {
-  height: 140px; 
+  height: 100px; 
   position: relative; /* База для абсолютного позиционирования */
   background-color: #14358a; 
   width: 100%;
@@ -152,4 +152,4 @@
     letter-spacing: 1%;
 
     color: #fff;
-}
+} 

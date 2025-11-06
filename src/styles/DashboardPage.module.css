@@ -1,0 +1,106 @@
+.dashboardContainer {
+    /* Чтобы контент располагался по центру под хедером */
+    width: 100%;
+    min-height: calc(100vh - 140px); /* Минус высота хедера */
+    background-color: #f7f7f7; /* Светлый фон */
+}
+
+.mapSection {
+    /* Если MapSection не вынесен в отдельный компонент, здесь будут стили для синего фона с картой */
+}
+
+
+/* --- 1. Секция с четырьмя инфо-блоками (ГЛАВНЫЙ КОНТЕЙНЕР 2x2) --- */
+.infoBlocksSection {
+    /* Обеспечиваем центрирование и фиксированную ширину 
+       (ширина блока на макете около 550px)
+    */
+    width: 600px; /* Ширина белого блока */
+    height: 350px; /* Высота белого блока */
+    margin: 40px auto; /* Центрируем и даем отступ сверху */
+    padding: 0; 
+    
+    /* Оформление белого блока */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Более выраженная тень */
+
+    /* Используем Grid для расположения 2x2 */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две равные колонки */
+    grid-template-rows: 1fr 1fr; /* Две равные строки */
+    
+    /* Внутренний паддинг, чтобы текст не прилипал к краям */
+    padding: 20px;
+    
+    /* Убираем gap, так как разделители будут вертикальными и горизонтальными */
+    gap: 0;
+}
+
+/* --- 2. Стили для ОДНОГО инфо-блока (КЛИКАБЕЛЬНЫЙ InfoBlock) --- */
+.infoBlock {
+    /* Элементы Grid, занимающие всю ячейку */
+    width: 100%; 
+    height: 100%; 
+    
+    display: flex;
+    align-items: center; 
+    padding: 20px 20px; /* Увеличиваем внутренний паддинг */
+    text-decoration: none; 
+    
+    /* Убираем тень и фон, так как они у родителя */
+    background: none; 
+    box-shadow: none;
+    border: 2px solid transparent; 
+    transition: all 0.2s;
+}
+
+/* --- 3. Разделители (как на макете) --- */
+
+/* Вертикальный разделитель (между левой и правой колонкой) */
+.infoBlock:nth-child(odd) { /* Применяем только к нечетным (1-й и 3-й блок) */
+    /* Добавляем тонкую линию справа */
+    border-right: 1px solid #e0e0e0;
+}
+
+/* Горизонтальный разделитель (между верхней и нижней строкой) */
+.infoBlock:nth-child(-n + 2) { /* Применяем к первым двум блокам (1-й и 2-й) */
+    /* Добавляем тонкую линию снизу */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* --- 4. Активный блок (ПРОЕКТЫ) --- */
+
+
+/* --- 5. Стили иконок (как на макете) --- */
+.iconContainer {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px; 
+    /* Светло-синий фон иконок */
+    background-color: #e0ecff; 
+    /* Убираем градиент и тень из предыдущих шагов */
+    background-image: none;
+    box-shadow: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+.iconPlaceholder {
+    font-size: 20px;
+    /* Синий цвет самой иконки (для эмодзи) */
+    color: #3b5fcc; 
+}
+
+/* --- 6. Стиль заголовка --- */
+.blockTitle {
+    /* ... (остается прежним) ... */
+    font-size: 16px;
+    font-weight: 600; 
+    color: #333333;
+    margin: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
